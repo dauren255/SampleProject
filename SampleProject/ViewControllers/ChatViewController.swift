@@ -94,6 +94,18 @@ class ChatViewController: UIViewController {
         }
         scrollToBottomRow()
     }
+    private func configureTapGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap(){
+        view.endEditing(true)
+    }
+    
+    private func configureTextFields(){
+        messageField.delegate = self
+    }
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
@@ -107,8 +119,13 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(newMessage: messages[indexPath.row])
         return cell
     }
-    
-    
+}
+
+extension ChatViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 

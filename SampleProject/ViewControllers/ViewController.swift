@@ -16,30 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     override func viewDidLoad() {
-            let ref = Firestore.firestore().collection("messages")
-                   
-        ref.whereField("chatId", isEqualTo: "firstchat").addSnapshotListener { snapshot, error in
-                       
-                       var tempMessages = [Message]()
-                       
-                       if error != nil {
-                           print(error!.localizedDescription)
-                           return
-                       }
-                       
-                       for document in snapshot!.documents {
-                           let chatId = document["chatId"] as! String
-                           let senderId = document["senderId"] as! String
-                           let messageText = document["message"] as! String
-                           let timestamp = document["timestamp"] as! Timestamp
-                           let date = timestamp.dateValue()
-
-                           let message = Message(chatId: chatId, senderId: senderId, messageText: messageText, timeStamp: date)
-                           tempMessages.append(message)
-                       }
-                       
-                       print(tempMessages)
-                   }
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "GoToTheMainPage", sender: self)
         }

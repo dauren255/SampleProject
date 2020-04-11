@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = UIColor.systemGreen
     }
     
     @IBAction func signUpAction(_ sender: Any) {
@@ -43,9 +44,10 @@ class SignUpViewController: UIViewController {
                     
                 ]
             )
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            alertController.addAction(UIAlertAction(title: "OK", style: .default) { (action) -> Void in
+                self.navigationController?.popViewController(animated: true)
+            })
             self.present(alertController, animated: true, completion: nil)
-            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
