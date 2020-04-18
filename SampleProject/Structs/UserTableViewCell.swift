@@ -23,7 +23,7 @@ class UserTableViewCell: UITableViewCell {
             if snapshot.hasChild(user.uid){
                 self.online.text = "Online"
             } else {
-                self.online.text = "Offline"
+                self.online.text = ""
             }
         })
     }
