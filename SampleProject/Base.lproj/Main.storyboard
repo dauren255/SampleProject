@@ -213,7 +213,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BlS-f2-dGn">
-                                            <rect key="frame" x="20" y="11" width="374" height="30"/>
+                                            <rect key="frame" x="20" y="11" width="59.5" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -224,19 +224,31 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqz-pA-nhU">
+                                            <rect key="frame" x="325" y="11" width="69" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="69" id="SBW-98-Cb5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="max-gp-TmH" firstAttribute="top" secondItem="BlS-f2-dGn" secondAttribute="bottom" constant="20" id="4YX-fF-64l"/>
-                                        <constraint firstItem="max-gp-TmH" firstAttribute="bottom" secondItem="CwW-Ep-Ptx" secondAttribute="bottomMargin" id="7EB-u1-oA1"/>
-                                        <constraint firstItem="max-gp-TmH" firstAttribute="trailing" secondItem="CwW-Ep-Ptx" secondAttribute="trailingMargin" id="Au0-OP-a1o"/>
-                                        <constraint firstItem="max-gp-TmH" firstAttribute="leading" secondItem="CwW-Ep-Ptx" secondAttribute="leadingMargin" id="FBO-SM-Pr1"/>
-                                        <constraint firstItem="BlS-f2-dGn" firstAttribute="leading" secondItem="CwW-Ep-Ptx" secondAttribute="leadingMargin" id="Kcf-0Q-ldo"/>
-                                        <constraint firstItem="BlS-f2-dGn" firstAttribute="trailing" secondItem="CwW-Ep-Ptx" secondAttribute="trailingMargin" id="vJ1-ew-Ogz"/>
-                                        <constraint firstItem="BlS-f2-dGn" firstAttribute="top" secondItem="CwW-Ep-Ptx" secondAttribute="topMargin" id="w2o-RI-2vK"/>
+                                        <constraint firstItem="max-gp-TmH" firstAttribute="trailing" secondItem="CwW-Ep-Ptx" secondAttribute="trailingMargin" id="IZQ-r1-azx"/>
+                                        <constraint firstItem="max-gp-TmH" firstAttribute="leading" secondItem="CwW-Ep-Ptx" secondAttribute="leadingMargin" id="Ido-hd-VLl"/>
+                                        <constraint firstItem="max-gp-TmH" firstAttribute="bottom" secondItem="CwW-Ep-Ptx" secondAttribute="bottomMargin" id="Nmy-En-vP6"/>
+                                        <constraint firstItem="BlS-f2-dGn" firstAttribute="leading" secondItem="CwW-Ep-Ptx" secondAttribute="leadingMargin" id="NqW-8n-y5G"/>
+                                        <constraint firstItem="BlS-f2-dGn" firstAttribute="top" secondItem="CwW-Ep-Ptx" secondAttribute="topMargin" id="XQN-Vo-m0T"/>
+                                        <constraint firstItem="max-gp-TmH" firstAttribute="top" secondItem="BlS-f2-dGn" secondAttribute="bottom" constant="20" id="bfz-VI-bgn"/>
+                                        <constraint firstItem="wqz-pA-nhU" firstAttribute="top" secondItem="CwW-Ep-Ptx" secondAttribute="topMargin" id="oAW-Em-cqF"/>
+                                        <constraint firstItem="wqz-pA-nhU" firstAttribute="trailing" secondItem="CwW-Ep-Ptx" secondAttribute="trailingMargin" id="tEW-yE-n9m"/>
+                                        <constraint firstItem="max-gp-TmH" firstAttribute="top" secondItem="wqz-pA-nhU" secondAttribute="bottom" constant="29" id="wrt-TJ-wyw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="email" destination="max-gp-TmH" id="CqE-1R-ACS"/>
+                                    <outlet property="online" destination="wqz-pA-nhU" id="qPg-xS-PxI"/>
                                     <outlet property="username" destination="BlS-f2-dGn" id="4tX-BA-1pA"/>
                                     <segue destination="DwR-b9-i5p" kind="show" identifier="GoToTheChat" id="BTw-nl-0My"/>
                                 </connections>
@@ -449,6 +461,6 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zmu-4E-Zvp"/>
+        <segue reference="BTw-nl-0My"/>
     </inferredMetricsTieBreakers>
 </document>

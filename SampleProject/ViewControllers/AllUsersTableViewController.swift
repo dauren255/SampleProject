@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 class AllUsersTableViewController: UITableViewController {
     
-    var uid = Auth.auth().currentUser?.uid
+    var uid = Auth.auth().currentUser!.uid
     var users = [User]()
     var chats = [Chat]()
     override func viewDidLoad() {
@@ -20,6 +20,11 @@ class AllUsersTableViewController: UITableViewController {
         setupTableView()
         observeUsers()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+           observeUsers()
+           tableView.reloadData()
+       }
     
     func setupTableView() {
         tableView.delegate = self
@@ -62,19 +67,19 @@ class AllUsersTableViewController: UITableViewController {
         if segue.identifier == "GoToTheChat"{
             if let viewController = segue.destination as? ChatViewController, let index = tableView.indexPathForSelectedRow?.row{
                 for chat in chats {
-                    if chat.chatId == uid! + users[index].uid {
+                    if chat.chatId == uid + users[index].uid {
                         viewController.chatId = chat.chatId
                         return
                     }
                 }
-                Firestore.firestore().collection("chats").document(uid! + users[index].uid).setData([
-                    "id": uid! + users[index].uid,
+                Firestore.firestore().collection("chats").document(uid + users[index].uid).setData([
+                    "id": uid + users[index].uid,
                     "lastMessage": "",
                     "lastMessageTimestamp": Timestamp(),
                     "participantIds": [uid, users[index].uid]
                     ]
                 )
-                viewController.chatId = uid! + users[index].uid
+                viewController.chatId = uid + users[index].uid
             }
         }
     }

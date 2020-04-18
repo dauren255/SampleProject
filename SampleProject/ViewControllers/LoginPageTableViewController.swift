@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseDatabase
+
 
 
 class LoginPageTableViewController: UITableViewController {
@@ -19,10 +21,16 @@ class LoginPageTableViewController: UITableViewController {
         super.viewDidLoad()
         observeChats()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        setUserOnline()
     }
     override func viewDidAppear(_ animated: Bool) {
         observeChats()
         tableView.reloadData()
+    }
+    func setUserOnline(){
+        let currentUserRef = Database.database().reference(withPath: "online").child(Auth.auth().currentUser!.uid)
+        currentUserRef.setValue(Auth.auth().currentUser!.email)
+        currentUserRef.onDisconnectRemoveValue()
     }
     func observeChats() {
         
@@ -51,6 +59,7 @@ class LoginPageTableViewController: UITableViewController {
     }
     @IBAction func logOutButton(_ sender: Any) {
         if signOut() == true {
+ 
             self.navigationController?.popViewController(animated: true)
         } else {
             let alertController = UIAlertController(title: "Ошибка", message:
@@ -72,6 +81,7 @@ class LoginPageTableViewController: UITableViewController {
     
     func signOut() -> Bool{
         do{
+            Database.database().reference(withPath: "online").child(Auth.auth().currentUser!.uid).removeValue()
             try Auth.auth().signOut()
             return true
         }catch{

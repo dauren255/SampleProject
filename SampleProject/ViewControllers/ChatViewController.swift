@@ -60,7 +60,6 @@ class ChatViewController: UIViewController {
 
                 ]
             )
-            
         }
         observeMessages()
         scrollToBottomRow()
